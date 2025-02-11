@@ -22,11 +22,14 @@
 						<strong> Posts </strong>
 					</h4>
 					<div class="col-md-3 text-end">
-						<a href="" class="btn btn-success">Create Post</a>
+						<a href="{{ route('posts.create') }}" class="btn btn-success">Create Post</a>
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
+				@session("success")
+					<div class="alert alert-success"> {{ $value }} </div>
+				@endsession
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -44,8 +47,8 @@
 							</tr>
 						@endforeach
 					</tbody>
-						{{ $posts->links() }}
 				</table>
+				{{ $posts->links('pagination::bootstrap-4') }}
 			</div>
 		</div>
 	</div>
