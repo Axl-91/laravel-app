@@ -31,4 +31,32 @@ class PostController extends Controller
                 ->route("posts.index")
                 ->with('success', 'Post created successfully');
     }
+
+    public function edit(Request $request, $id) {
+        $post = Post::find($id);
+
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id) {
+        $post = Post::find($id);
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+            
+        return redirect()
+                ->route("posts.index")
+                ->with('success', 'Post edited successfully');
+    }
+
+    public function destroy($id) {
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect()
+                ->route("posts.index")
+                ->with('success', 'Post deleted successfully');
+    }
 }
