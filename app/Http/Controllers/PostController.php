@@ -3,60 +3,70 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index(Request $request) {
-        $posts = Post::paginate(5);
-        return view('posts.index', compact('posts'));
+    public function index(): View
+    {
+        $posts = Post::query()->paginate(5);
+        return view("posts.index", compact("posts"));
     }
 
-    public function create() {
-        return view('posts.create');
+    public function create(): View
+    {
+        return view("posts.create");
     }
 
-    public function store(Request $request) {
+    public function store(Request $request): RedirectResponse
+    {
         $request->validate([
-            'title' => 'required',
-            'body' => 'required'
-        ]);
-        
-        Post::create([
-            'title' => $request->title,
-            'body' => $request->body,
+            "title" => "required",
+            "body" => "required",
         ]);
 
-        return redirect()
-                ->route("posts.index")
-                ->with('success', 'Post created successfully');
-    }
+        $post = new Post([
+            "title" => $request["title"],
+            "body" => $request["body"],
+        ]);
 
-    public function edit(Request $request, $id) {
-        $post = Post::find($id);
-
-        return view('posts.edit', compact('post'));
-    }
-
-    public function update(Request $request, $id) {
-        $post = Post::find($id);
-
-        $post->title = $request->title;
-        $post->body = $request->body;
         $post->save();
-            
+
         return redirect()
-                ->route("posts.index")
-                ->with('success', 'Post edited successfully');
+            ->route("posts.index")
+            ->with("success", "Post created successfully");
     }
 
-    public function destroy($id) {
-        $post = Post::find($id);
+    public function edit($id): View
+    {
+        $post = Post::query()->find($id);
+
+        return view("posts.edit", compact("post"));
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $post = Post::query()->find($id);
+
+        $post->title = $request["title"];
+        $post->body = $request["body"];
+        $post->save();
+
+        return redirect()
+            ->route("posts.index")
+            ->with("success", "Post edited successfully");
+    }
+
+    public function destroy($id): RedirectResponse
+    {
+        $post = Post::query()->find($id);
 
         $post->delete();
 
         return redirect()
-                ->route("posts.index")
-                ->with('success', 'Post deleted successfully');
+            ->route("posts.index")
+            ->with("success", "Post deleted successfully");
     }
 }
