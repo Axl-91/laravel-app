@@ -13,9 +13,7 @@
 
 	</head>
 
-	<body>
-		<div class="container pt-5">
+	<body class="d-flex flex-column vh-100">
 			@yield("content")
-		</div>
 	</body>
 </html>
