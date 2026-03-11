@@ -26,7 +26,7 @@
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block mt-2">Register</button>
+        <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Register</button>
     </form>
 </div>
 

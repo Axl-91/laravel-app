@@ -5,15 +5,14 @@
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav ms-auto">
                     @if (auth()->check())
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form action="{{ route('logout') }}" method="POST" class="d-inline">
                             @csrf
+                            <button
+                                type="submit"
+                                class="btn btn-primary border">
+                                Logout
+                            </button>
                         </form>
-                        <button
-                            type="button"
-                            class="btn btn-primary border"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </button>
                     @else
                         <a
                             type="button"
