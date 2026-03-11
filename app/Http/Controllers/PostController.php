@@ -15,6 +15,13 @@ class PostController extends Controller
         return view("posts.index", compact("posts"));
     }
 
+    public function show($id): View
+    {
+        $post = Post::query()->find($id);
+
+        return view("posts.show", compact("post"));
+    }
+
     public function create(): View
     {
         return view("posts.create");

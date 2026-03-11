@@ -24,7 +24,7 @@
     					<th>ID</th>
     					<th>Title</th>
     					<th>Body</th>
-    					<th width="250px">Actions</th>
+    					<th>Actions</th>
     				</tr>
     			</thead>
     			<tbody>
@@ -32,7 +32,7 @@
     					<tr>
     						<td>{{ $post->id }}</td>
     						<td>{{ $post->title }}</td>
-    						<td>{{ $post->body }}</td>
+    						<td>{{ Str::limit($post->body, 50) }}</td>
     						<td>
     							<form method="POST",
     								action="{{ route('posts.destroy', $post->id) }}"
@@ -40,6 +40,7 @@
     								@csrf
     								@method('DELETE')
 
+    								<a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-success">Show</a>
     								<a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-info">Edit</a>
     								<button type="submit" class="btn btn-outline-danger">Delete</button>
     							</form>
