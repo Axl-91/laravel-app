@@ -24,7 +24,6 @@
                 </div>
 
                 <button type="submit" class="text-center btn btn-primary btn-block mt-4">Login</button>
-
             </form>
         </div>
     </div>

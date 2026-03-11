@@ -2,7 +2,7 @@
 
 @section("content")
 
-<div class="container mt-5">
+<div class="d-flex flex-column justify-content-center align-items-center vh-100">
     <h2 class="text-center">Register</h2>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -29,3 +29,5 @@
         <button type="submit" class="btn btn-primary btn-block mt-2">Register</button>
     </form>
 </div>
+
+@endsection

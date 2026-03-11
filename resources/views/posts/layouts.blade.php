@@ -14,6 +14,7 @@
 	</head>
 
 	<body class="d-flex flex-column vh-100">
+            @include("partials.header")
 			@yield("content")
 	</body>
 </html>
