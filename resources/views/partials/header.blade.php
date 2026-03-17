@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="/">Navbar</a>
+            <a class="navbar-brand text-light" href="/">LaraPost</a>
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav ms-auto">
                     @if (auth()->check())
