@@ -29,7 +29,7 @@
     			</div>
     			<div class="mt-2">
     				<label class="form-label">Body:</label>
-    				<textarea name="body" class="form-control">{{ $post->body }}</textarea>
+    				<textarea name="body" class="form-control pb-5">{{ $post->body }}</textarea>
 
     				@error('body')
     					<div class="text-danger">{{ $message }} </div>
